@@ -1,22 +1,23 @@
 import { useContext } from "react";
 import MealItemForm from "./MealItemForm";
-import classes from "./MealItem.module.css";
-import CartContext from "../../../store/cart-context";
+import classes from "../../../UI/Modules/MealItem.module.css";
+import CartContext from "../../../../store/CartContext"
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
-  const price = `$${props.price.toFixed(2)}`; // The toFixed() method formats a number using fixed-point notation. i.e. $23 => $23.00
-  // The toFixed() method formats a number using fixed-point notation.
+  
+  const price = `$${props.price.toFixed(2)}`; 
+  // The toFixed() method formats a number using fixed-point notation. i.e. $23 => $23.00
 
   const addToCartHandler = (amount) => {
-    // props.onAddToCart(amount);
     cartCtx.addItem({
       id: props.id,
       name: props.name,
-      amount: amount,
+      amount: amount, //We can write only "amount," instead of "amount: amount,"
       price: props.price
     });
   };
+
 
   return (
     <li className={classes.meal}>
@@ -33,3 +34,6 @@ const MealItem = (props) => {
 };
 
 export default MealItem;
+
+// Sushi -Finest fish and veggies - $22.99 - Amount 1 +Add (All the line)
+// CartContext using here because adding operation is related to cart. So, we need to use CartContext here.

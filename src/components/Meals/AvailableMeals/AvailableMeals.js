@@ -1,5 +1,5 @@
-import Card from "../UI/Card";
-import classes from "./AvailableMeals.module.css";
+import Card from "./Card";
+import classes from '../../UI/Modules/AvailableMeals.module.css';
 import MealItem from "./MealItem/MealItem";
 
 const DUMMY_MEALS = [
@@ -27,16 +27,23 @@ const DUMMY_MEALS = [
     description: "Healthy...and green...",
     price: 18.99,
   },
+  {
+    id: "m5",
+    name: "Turkish Pizza (Lahmacun)",
+    description: "The most delicious Turkish street food..",
+    price: 9.99,
+  },
 ];
 
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
     <MealItem
-      id={meal.id}
       key={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
+      {...meal}
+      // id={meal.id}
+      // name={meal.name}
+      // description={meal.description}
+      // price={meal.price} tum bu 4'unun yerine {...meal} dememiz yeterli.
     />
   ));
 

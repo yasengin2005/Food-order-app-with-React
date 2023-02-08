@@ -1,15 +1,17 @@
 import { useContext } from 'react';
 
-import Modal from '../UI/Modal';
+import Modal from './Modal';
 import CartItem from './CartItem';
-import classes from './Cart.module.css';
-import CartContext from '../../store/cart-context';
+import classes from '../UI/Modules/Cart.module.css'
+import CartContext from '../../store/CartContext';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
+// if 1 sushi & 1 schnitzel add and if push your cart (at header) --> console.log(cartCtx) --> {items Array(2), totalAmount: 39.48999..., addItem: ƒ, removeItem: ƒ}
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `$${Math.max(cartCtx.totalAmount, 0).toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
+
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -27,8 +29,8 @@ const Cart = (props) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
-          onRemove={cartItemRemoveHandler.bind(null, item.id)}
-          onAdd={cartItemAddHandler.bind(null, item)}
+          onRemove={() => cartItemRemoveHandler(item.id)}  // same with onRemove={cartItemRemoveHandler.bind(null, item.id)}
+          onAdd={() => cartItemAddHandler(item)}  // same with onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
     </ul>
@@ -52,3 +54,5 @@ const Cart = (props) => {
 };
 
 export default Cart;
+
+// CartContext using here because adding operation is related to cart. So, we need to use CartContext here.
