@@ -1,6 +1,6 @@
-import Card from "./Card";
-import classes from '../../UI/Modules/AvailableMeals.module.css';
-import MealItem from "./MealItem/MealItem";
+import MealItem from './MealItem/MealItem'
+import classes from '../../UI/Modules/AvailableMeals.module.css'
+import Card from './Card';
 
 const DUMMY_MEALS = [
   {
@@ -31,29 +31,30 @@ const DUMMY_MEALS = [
     id: "m5",
     name: "Turkish Pizza (Lahmacun)",
     description: "The most delicious Turkish street food..",
-    price: 9.99,
+    price: 10,
   },
 ];
 
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
-    <MealItem
+    <MealItem 
       key={meal.id}
-      {...meal}
-      // id={meal.id}
-      // name={meal.name}
-      // description={meal.description}
-      // price={meal.price} tum bu 4'unun yerine {...meal} dememiz yeterli.
+      id={meal.id}
+      name={meal.name}
+      description={meal.description}
+      price={meal.price}
     />
-  ));
-
+  ))
   return (
     <section className={classes.meals}>
       <Card>
         <ul>{mealsList}</ul>
       </Card>
     </section>
-  );
-};
+  )
+}
 
 export default AvailableMeals;
+
+// Aslinda MealItem propsu olarak sadece {...meal} yazsak da hersey duzegun calisacaktir ama F12 consolu 
+// key kullanilsin diye ikaz verecektir. Bunun onune gecmek icin ayriyeten key={meal.id} yazarsak cillop gibi calisir.

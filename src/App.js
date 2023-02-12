@@ -1,33 +1,35 @@
 import { useState } from "react";
-
 import Header from "./components/Header/Header";
 import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
+import Cart from './components/Cart/Cart'
 import CartProvider from "./store/CartProvider";
 
-function App() {
+
+const App = () => {
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
-    setCartIsShown(true);
-  };
+    setCartIsShown(true)
+  }
 
   const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
+    setCartIsShown(false)
+  }
+
 
   return (
     <CartProvider>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} onClose={hideCartHandler} />
+      { cartIsShown && <Cart onCloseA={hideCartHandler} />}
+      <Header onShowCart={showCartHandler}/>
       <main>
         <Meals />
       </main>
     </CartProvider>
+
   );
-}
+};
 
 export default App;
 
-// Component tree: App > CartProvider > Context Provider > -Header -Meals - Cart
-// Only three elements using CartContext: MealItem.js, Cart.js, HeaderCartButton.js
+//Once alt alta h1,2'lerle Cart ve Header ile <main> Meals </main> yazilsin, complar yazildikca cevrilsin. 
+// en sonunda cartprovider ve fonklar gelecek
