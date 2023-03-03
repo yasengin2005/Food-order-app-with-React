@@ -17,6 +17,12 @@
   z-index: 10;  /* z-index 0'dan buyukse cakistigi resmin (main image'in) ustunde gorunur, arkadas garanti olsun diye 10 demis +1 de yeterliydi. O ya da -1 olursa arka plan resmi one cikar ve bizim header altta kaldigindan gorunmez*/ 
 }
 
+.right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .main-image {
   width: 100%; /* yazmasaydi da default 100% zaten */
   height: 25rem; /* 4 satirlik  mealItem listemizin tamaminin gorunebilmesi icin header altindaki bu resme 25 rem yeterli. */
